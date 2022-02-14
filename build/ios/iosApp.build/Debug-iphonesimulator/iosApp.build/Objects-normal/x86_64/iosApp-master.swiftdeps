@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "029cda7cf562553728b031d305ccc1ecaeab90ae94d7ddc15723ba264e795a34"
+build_start_time: [1644817314, 28735160]
+build_end_time: [1644817315, 266078948]
+inputs:
+  "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/iosApp/iosApp/ContentView.swift": [1644816247, 153248310]
+  "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/iosApp/iosApp/iOSApp.swift": [1644816247, 154468536]

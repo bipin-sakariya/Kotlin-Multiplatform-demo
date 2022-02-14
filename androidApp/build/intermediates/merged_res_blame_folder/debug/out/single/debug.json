@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/res/merged/debug/drawable_ic_edit.png.flat",
+        "source": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/src/main/res/drawable/ic_edit.png"
+    },
+    {
+        "merged": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/res/merged/debug/drawable_solid_corner_radius.xml.flat",
+        "source": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/src/main/res/drawable/solid_corner_radius.xml"
+    },
+    {
+        "merged": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/res/merged/debug/drawable_corner_radius.xml.flat",
+        "source": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/src/main/res/drawable/corner_radius.xml"
+    },
+    {
+        "merged": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/res/merged/debug/layout_item_list.xml.flat",
+        "source": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/src/main/res/layout/item_list.xml"
+    },
+    {
+        "merged": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/res/merged/debug/drawable_ic_delete.png.flat",
+        "source": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/src/main/res/drawable/ic_delete.png"
+    }
+]
