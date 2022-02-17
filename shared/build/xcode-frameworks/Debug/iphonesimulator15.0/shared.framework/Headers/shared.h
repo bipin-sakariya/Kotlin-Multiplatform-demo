@@ -6,6 +6,10 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
+@class SharedDatabaseDriverFactory, SharedHello, SharedDatabase, SharedAppDatabaseCompanion, SharedRuntimeQuery<__covariant RowType>, SharedRuntimeTransacterTransaction, SharedKotlinByteArray, SharedKotlinByteIterator;
+
+@protocol SharedRuntimeSqlDriver, SharedAppDatabaseQueries, SharedRuntimeTransactionWithoutReturn, SharedRuntimeTransactionWithReturn, SharedRuntimeTransacter, SharedAppDatabase, SharedRuntimeSqlDriverSchema, SharedRuntimeSqlPreparedStatement, SharedRuntimeSqlCursor, SharedRuntimeCloseable, SharedRuntimeTransactionCallbacks, SharedRuntimeQueryListener, SharedKotlinIterator;
+
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunknown-warning-option"
@@ -141,11 +145,29 @@ __attribute__((swift_name("KotlinBoolean")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Greeting")))
-@interface SharedGreeting : SharedBase
+__attribute__((swift_name("Database")))
+@interface SharedDatabase : SharedBase
+- (instancetype)initWithDatabaseDriverFactory:(SharedDatabaseDriverFactory *)databaseDriverFactory __attribute__((swift_name("init(databaseDriverFactory:)"))) __attribute__((objc_designated_initializer));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("DatabaseDriverFactory")))
+@interface SharedDatabaseDriverFactory : SharedBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (id<SharedRuntimeSqlDriver>)createDriver __attribute__((swift_name("createDriver()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Greeting")))
+@interface SharedGreeting : SharedBase
+- (instancetype)initWithDatabaseDriverFactory:(SharedDatabaseDriverFactory *)databaseDriverFactory __attribute__((swift_name("init(databaseDriverFactory:)"))) __attribute__((objc_designated_initializer));
+- (void)deleteDataId:(int64_t)id __attribute__((swift_name("deleteData(id:)")));
+- (NSArray<SharedHello *> *)getData __attribute__((swift_name("getData()")));
 - (NSString *)greeting __attribute__((swift_name("greeting()")));
+- (void)insertDataDate:(NSString *)date name:(NSString *)name project:(NSString *)project __attribute__((swift_name("insertData(date:name:project:)")));
+- (void)updateDataId:(int64_t)id date:(NSString *)date name:(NSString *)name project:(NSString *)project __attribute__((swift_name("updateData(id:date:name:project:)")));
+@property SharedDatabase *database __attribute__((swift_name("database")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -154,6 +176,180 @@ __attribute__((swift_name("Platform")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @property (readonly) NSString *platform __attribute__((swift_name("platform")));
+@end;
+
+__attribute__((swift_name("RuntimeTransacter")))
+@protocol SharedRuntimeTransacter
+@required
+- (void)transactionNoEnclosing:(BOOL)noEnclosing body:(void (^)(id<SharedRuntimeTransactionWithoutReturn>))body __attribute__((swift_name("transaction(noEnclosing:body:)")));
+- (id _Nullable)transactionWithResultNoEnclosing:(BOOL)noEnclosing bodyWithReturn:(id _Nullable (^)(id<SharedRuntimeTransactionWithReturn>))bodyWithReturn __attribute__((swift_name("transactionWithResult(noEnclosing:bodyWithReturn:)")));
+@end;
+
+__attribute__((swift_name("AppDatabase")))
+@protocol SharedAppDatabase <SharedRuntimeTransacter>
+@required
+@property (readonly) id<SharedAppDatabaseQueries> appDatabaseQueries __attribute__((swift_name("appDatabaseQueries")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("AppDatabaseCompanion")))
+@interface SharedAppDatabaseCompanion : SharedBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) SharedAppDatabaseCompanion *shared __attribute__((swift_name("shared")));
+- (id<SharedAppDatabase>)invokeDriver:(id<SharedRuntimeSqlDriver>)driver __attribute__((swift_name("invoke(driver:)")));
+@property (readonly) id<SharedRuntimeSqlDriverSchema> Schema __attribute__((swift_name("Schema")));
+@end;
+
+__attribute__((swift_name("AppDatabaseQueries")))
+@protocol SharedAppDatabaseQueries <SharedRuntimeTransacter>
+@required
+- (void)DeleteSingleRecordId:(int64_t)id __attribute__((swift_name("DeleteSingleRecord(id:)")));
+- (void)UpdateDataDate:(NSString *)date name:(NSString *)name project:(NSString *)project id:(int64_t)id __attribute__((swift_name("UpdateData(date:name:project:id:)")));
+- (void)insertHelloDate:(NSString *)date name:(NSString *)name project:(NSString *)project __attribute__((swift_name("insertHello(date:name:project:)")));
+- (SharedRuntimeQuery<SharedHello *> *)selectAddData __attribute__((swift_name("selectAddData()")));
+- (SharedRuntimeQuery<id> *)selectAddDataMapper:(id (^)(SharedLong *, NSString *, NSString *, NSString *))mapper __attribute__((swift_name("selectAddData(mapper:)")));
+- (SharedRuntimeQuery<SharedHello *> *)selectAll __attribute__((swift_name("selectAll()")));
+- (SharedRuntimeQuery<id> *)selectAllMapper:(id (^)(SharedLong *, NSString *, NSString *, NSString *))mapper __attribute__((swift_name("selectAll(mapper:)")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Hello")))
+@interface SharedHello : SharedBase
+- (instancetype)initWithId:(int64_t)id date:(NSString *)date name:(NSString *)name project:(NSString *)project __attribute__((swift_name("init(id:date:name:project:)"))) __attribute__((objc_designated_initializer));
+- (int64_t)component1 __attribute__((swift_name("component1()")));
+- (NSString *)component2 __attribute__((swift_name("component2()")));
+- (NSString *)component3 __attribute__((swift_name("component3()")));
+- (NSString *)component4 __attribute__((swift_name("component4()")));
+- (SharedHello *)doCopyId:(int64_t)id date:(NSString *)date name:(NSString *)name project:(NSString *)project __attribute__((swift_name("doCopy(id:date:name:project:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *date __attribute__((swift_name("date")));
+@property (readonly) int64_t id __attribute__((swift_name("id")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
+@property (readonly) NSString *project __attribute__((swift_name("project")));
+@end;
+
+__attribute__((swift_name("RuntimeCloseable")))
+@protocol SharedRuntimeCloseable
+@required
+- (void)close __attribute__((swift_name("close()")));
+@end;
+
+__attribute__((swift_name("RuntimeSqlDriver")))
+@protocol SharedRuntimeSqlDriver <SharedRuntimeCloseable>
+@required
+- (SharedRuntimeTransacterTransaction * _Nullable)currentTransaction __attribute__((swift_name("currentTransaction()")));
+- (void)executeIdentifier:(SharedInt * _Nullable)identifier sql:(NSString *)sql parameters:(int32_t)parameters binders:(void (^ _Nullable)(id<SharedRuntimeSqlPreparedStatement>))binders __attribute__((swift_name("execute(identifier:sql:parameters:binders:)")));
+- (id<SharedRuntimeSqlCursor>)executeQueryIdentifier:(SharedInt * _Nullable)identifier sql:(NSString *)sql parameters:(int32_t)parameters binders:(void (^ _Nullable)(id<SharedRuntimeSqlPreparedStatement>))binders __attribute__((swift_name("executeQuery(identifier:sql:parameters:binders:)")));
+- (SharedRuntimeTransacterTransaction *)doNewTransaction __attribute__((swift_name("doNewTransaction()")));
+@end;
+
+__attribute__((swift_name("RuntimeTransactionCallbacks")))
+@protocol SharedRuntimeTransactionCallbacks
+@required
+- (void)afterCommitFunction:(void (^)(void))function __attribute__((swift_name("afterCommit(function:)")));
+- (void)afterRollbackFunction:(void (^)(void))function __attribute__((swift_name("afterRollback(function:)")));
+@end;
+
+__attribute__((swift_name("RuntimeTransactionWithoutReturn")))
+@protocol SharedRuntimeTransactionWithoutReturn <SharedRuntimeTransactionCallbacks>
+@required
+- (void)rollback __attribute__((swift_name("rollback()")));
+- (void)transactionBody:(void (^)(id<SharedRuntimeTransactionWithoutReturn>))body __attribute__((swift_name("transaction(body:)")));
+@end;
+
+__attribute__((swift_name("RuntimeTransactionWithReturn")))
+@protocol SharedRuntimeTransactionWithReturn <SharedRuntimeTransactionCallbacks>
+@required
+- (void)rollbackReturnValue:(id _Nullable)returnValue __attribute__((swift_name("rollback(returnValue:)")));
+- (id _Nullable)transactionBody_:(id _Nullable (^)(id<SharedRuntimeTransactionWithReturn>))body __attribute__((swift_name("transaction(body_:)")));
+@end;
+
+__attribute__((swift_name("RuntimeSqlDriverSchema")))
+@protocol SharedRuntimeSqlDriverSchema
+@required
+- (void)createDriver:(id<SharedRuntimeSqlDriver>)driver __attribute__((swift_name("create(driver:)")));
+- (void)migrateDriver:(id<SharedRuntimeSqlDriver>)driver oldVersion:(int32_t)oldVersion newVersion:(int32_t)newVersion __attribute__((swift_name("migrate(driver:oldVersion:newVersion:)")));
+@property (readonly) int32_t version __attribute__((swift_name("version")));
+@end;
+
+__attribute__((swift_name("RuntimeQuery")))
+@interface SharedRuntimeQuery<__covariant RowType> : SharedBase
+- (instancetype)initWithQueries:(NSMutableArray<SharedRuntimeQuery<id> *> *)queries mapper:(RowType (^)(id<SharedRuntimeSqlCursor>))mapper __attribute__((swift_name("init(queries:mapper:)"))) __attribute__((objc_designated_initializer));
+- (void)addListenerListener:(id<SharedRuntimeQueryListener>)listener __attribute__((swift_name("addListener(listener:)")));
+- (id<SharedRuntimeSqlCursor>)execute __attribute__((swift_name("execute()")));
+- (NSArray<RowType> *)executeAsList __attribute__((swift_name("executeAsList()")));
+- (RowType)executeAsOne __attribute__((swift_name("executeAsOne()")));
+- (RowType _Nullable)executeAsOneOrNull __attribute__((swift_name("executeAsOneOrNull()")));
+- (void)notifyDataChanged __attribute__((swift_name("notifyDataChanged()")));
+- (void)removeListenerListener:(id<SharedRuntimeQueryListener>)listener __attribute__((swift_name("removeListener(listener:)")));
+@property (readonly) RowType (^mapper)(id<SharedRuntimeSqlCursor>) __attribute__((swift_name("mapper")));
+@end;
+
+__attribute__((swift_name("RuntimeTransacterTransaction")))
+@interface SharedRuntimeTransacterTransaction : SharedBase <SharedRuntimeTransactionCallbacks>
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)afterCommitFunction:(void (^)(void))function __attribute__((swift_name("afterCommit(function:)")));
+- (void)afterRollbackFunction:(void (^)(void))function __attribute__((swift_name("afterRollback(function:)")));
+- (void)endTransactionSuccessful:(BOOL)successful __attribute__((swift_name("endTransaction(successful:)")));
+@property (readonly) SharedRuntimeTransacterTransaction * _Nullable enclosingTransaction __attribute__((swift_name("enclosingTransaction")));
+@end;
+
+__attribute__((swift_name("RuntimeSqlPreparedStatement")))
+@protocol SharedRuntimeSqlPreparedStatement
+@required
+- (void)bindBytesIndex:(int32_t)index bytes:(SharedKotlinByteArray * _Nullable)bytes __attribute__((swift_name("bindBytes(index:bytes:)")));
+- (void)bindDoubleIndex:(int32_t)index double:(SharedDouble * _Nullable)double_ __attribute__((swift_name("bindDouble(index:double:)")));
+- (void)bindLongIndex:(int32_t)index long:(SharedLong * _Nullable)long_ __attribute__((swift_name("bindLong(index:long:)")));
+- (void)bindStringIndex:(int32_t)index string:(NSString * _Nullable)string __attribute__((swift_name("bindString(index:string:)")));
+@end;
+
+__attribute__((swift_name("RuntimeSqlCursor")))
+@protocol SharedRuntimeSqlCursor <SharedRuntimeCloseable>
+@required
+- (SharedKotlinByteArray * _Nullable)getBytesIndex:(int32_t)index __attribute__((swift_name("getBytes(index:)")));
+- (SharedDouble * _Nullable)getDoubleIndex:(int32_t)index __attribute__((swift_name("getDouble(index:)")));
+- (SharedLong * _Nullable)getLongIndex:(int32_t)index __attribute__((swift_name("getLong(index:)")));
+- (NSString * _Nullable)getStringIndex:(int32_t)index __attribute__((swift_name("getString(index:)")));
+- (BOOL)next __attribute__((swift_name("next()")));
+@end;
+
+__attribute__((swift_name("RuntimeQueryListener")))
+@protocol SharedRuntimeQueryListener
+@required
+- (void)queryResultsChanged __attribute__((swift_name("queryResultsChanged()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinByteArray")))
+@interface SharedKotlinByteArray : SharedBase
++ (instancetype)arrayWithSize:(int32_t)size __attribute__((swift_name("init(size:)")));
++ (instancetype)arrayWithSize:(int32_t)size init:(SharedByte *(^)(SharedInt *))init __attribute__((swift_name("init(size:init:)")));
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (int8_t)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
+- (SharedKotlinByteIterator *)iterator __attribute__((swift_name("iterator()")));
+- (void)setIndex:(int32_t)index value:(int8_t)value __attribute__((swift_name("set(index:value:)")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
+@end;
+
+__attribute__((swift_name("KotlinIterator")))
+@protocol SharedKotlinIterator
+@required
+- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
+- (id _Nullable)next_ __attribute__((swift_name("next_()")));
+@end;
+
+__attribute__((swift_name("KotlinByteIterator")))
+@interface SharedKotlinByteIterator : SharedBase <SharedKotlinIterator>
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (SharedByte *)next_ __attribute__((swift_name("next_()")));
+- (int8_t)nextByte __attribute__((swift_name("nextByte()")));
 @end;
 
 #pragma pop_macro("_Nullable_result")

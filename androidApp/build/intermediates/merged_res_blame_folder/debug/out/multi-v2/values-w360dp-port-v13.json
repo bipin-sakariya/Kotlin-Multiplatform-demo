@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/MyApplication/androidApp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/Kotlin-Multiplatform-demo/androidApp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/transforms-2/files-2.1/3dd5124de1460d334aae8d119710942a/material-1.4.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+                    "source": "/Users/mac/.gradle/caches/transforms-3/db9387344ddf82c6166988be967ee844/transformed/material-1.4.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

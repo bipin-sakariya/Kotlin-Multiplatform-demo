@@ -17,6 +17,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date : 02 Feb, 2022"
@@ -25,6 +26,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name : Sagar"
@@ -33,6 +35,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvProject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Project : Development"
@@ -43,6 +46,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/ivEdit"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginHorizontal="10dp"
@@ -51,6 +55,7 @@
             android:tint="@color/colorPrimary" />
 
         <ImageView
+            android:id="@+id/ivDelete"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:padding="3dp"

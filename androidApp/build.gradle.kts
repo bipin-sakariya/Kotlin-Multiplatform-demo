@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.myapplication.android"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 32
         versionCode = 1
         versionName = "1.0"
@@ -18,6 +18,12 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+        }
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "11"
         }
     }
 }
