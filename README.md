@@ -1,5 +1,9 @@
 # Kotlin-Multiplatform-demo
-A kotlin multiplatform demo app for android and IOS
+
+With this sample app, you can:
+
+- Add, Update, Delete records
+- List of available records
 
 # Android
 
