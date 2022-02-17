@@ -1,7 +1,6 @@
 # Kotlin-Multiplatform-demo
 
 With this sample app, you can:
-
 - Add, Update, Delete records
 - List of available records
 
