@@ -3,4 +3,9 @@ A kotlin multiplatform demo app for android and IOS
 
 # Android
 
-![Android](https://user-images.githubusercontent.com/36040972/153868605-49077a76-a5d0-412c-81bd-45e80d675783.jpg)
+https://user-images.githubusercontent.com/36040972/154439049-13ddfffd-0557-4c6b-af09-b7386a4e147d.mp4
+
+# iOS
+
+https://user-images.githubusercontent.com/36040972/154440289-edfb45a3-b007-41cf-84d5-738d5aeb1d4e.mov
+
