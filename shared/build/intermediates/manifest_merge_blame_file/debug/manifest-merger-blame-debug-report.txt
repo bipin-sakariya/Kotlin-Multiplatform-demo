@@ -3,7 +3,7 @@
 3    package="com.example.myapplication" >
 4
 5    <uses-sdk
-6        android:minSdkVersion="26"
+6        android:minSdkVersion="21"
 6-->/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/Kotlin-Multiplatform-demo/shared/src/androidMain/AndroidManifest.xml
 7        android:targetSdkVersion="32" />
 7-->/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/Kotlin-Multiplatform-demo/shared/src/androidMain/AndroidManifest.xml
