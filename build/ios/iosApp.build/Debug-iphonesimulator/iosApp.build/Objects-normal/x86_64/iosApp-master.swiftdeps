@@ -1,7 +1,7 @@
 version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
 options: "029cda7cf562553728b031d305ccc1ecaeab90ae94d7ddc15723ba264e795a34"
-build_start_time: [1645070066, 85705041]
-build_end_time: [1645070068, 666919946]
+build_start_time: [1645087873, 499264955]
+build_end_time: [1645087877, 594150066]
 inputs:
-  "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/Kotlin-Multiplatform-demo/iosApp/iosApp/ContentView.swift": [1645016088, 7594108]
+  "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/Kotlin-Multiplatform-demo/iosApp/iosApp/ContentView.swift": [1645082619, 814733266]
   "/Users/mac/Documents/Sagar/Workspace/KotlinMultipartPlatform/Kotlin-Multiplatform-demo/iosApp/iosApp/iOSApp.swift": [1644816247, 154468536]

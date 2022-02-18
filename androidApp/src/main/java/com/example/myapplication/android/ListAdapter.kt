@@ -5,13 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.cache.Hello
-import java.util.ArrayList
 
-class ListAdapter(var dataList : List<com.example.myapplication.cache.Hello>, var selectedItem: SelectedItem) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
+class ListAdapter(var dataList : List<Hello>, var selectedItem: SelectedItem) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

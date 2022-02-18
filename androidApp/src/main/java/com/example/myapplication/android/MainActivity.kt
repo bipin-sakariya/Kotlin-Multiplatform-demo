@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.DatabaseDriverFactory
 import com.example.myapplication.Greeting
+import com.example.myapplication.cache.Hello
 
 import java.util.*
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity(), SelectedItem {
 
     private var greeting: Greeting? = null
     var listAdapter: ListAdapter? = null
-    var dataList : ArrayList<com.example.myapplication.cache.Hello> = ArrayList()
+    var dataList : ArrayList<Hello> = ArrayList()
     var edtName: EditText? = null
     var txtDate: TextView? = null
     var selectProject : String = "Select Project"
@@ -111,13 +112,13 @@ class MainActivity : AppCompatActivity(), SelectedItem {
                     selectProject = ""
                     spnProject!!.setSelection(0)
                     dataList.clear()
-                    dataList.addAll(greeting!!.getData() as ArrayList<com.example.myapplication.cache.Hello>)
+                    dataList.addAll(greeting!!.getData() as ArrayList<Hello>)
                     listAdapter!!.notifyDataSetChanged()
                 }
             }
         })
 
-        dataList = greeting!!.getData() as ArrayList<com.example.myapplication.cache.Hello>
+        dataList = greeting!!.getData() as ArrayList<Hello>
         listAdapter = ListAdapter(dataList,this)
         val layoutManager = LinearLayoutManager(applicationContext)
         rvList.layoutManager = layoutManager
